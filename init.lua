@@ -60,7 +60,7 @@ end)
 
 -- Tell iTunes to play prev track
 hs.hotkey.bind({"alt", "ctrl"}, "z", function()
-  hs.itunes.next()
+  hs.itunes.previous()
 end)
 
 -- -------------------- Mouse Locator --------------------
