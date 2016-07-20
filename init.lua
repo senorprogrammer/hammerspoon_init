@@ -6,6 +6,10 @@
 --end)
 
 -- -------------------- Config Reload --------------------
+--
+-- Watches this file for changes and automatically reloads them.
+-- I've had limited success with this; sometimes it seems not to catch the changes.
+-- I should map a keyboard shortcut to reload as well....
 
 function reloadConfig(files)
     doReload = false
@@ -23,6 +27,9 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 hs.notify.new({ title = "Hammerspoon", informativeText = "Config loaded" }):send()
 
 -- -------------------- UTC Menubar --------------------
+--
+-- See what time it is on the servers, right in the menubar (your servers are in UTC,
+-- aren't they? If they aren't, no script will save you).
 
 local utcMenu = hs.menubar.new()
 
@@ -34,6 +41,8 @@ end
 hs.timer.doEvery(1, function() setTime(utcMenu) end)
 
 -- -------------------- iTunes Control --------------------
+--
+-- Controls iTunes. Adds play/pause, next track, and prev track.
 
 -- Tell iTunes to play/pause
 hs.hotkey.bind({"alt", "ctrl"}, "space", function()
@@ -55,6 +64,11 @@ hs.hotkey.bind({"alt", "ctrl"}, "z", function()
 end)
 
 -- -------------------- Mouse Locator --------------------
+--
+-- Sometimes I lose the cursor and I'm not a fan of the 'shake to show'
+-- that's built into OS X. Paints a basic target around the cursor.
+--
+-- Someday I'll add fireworks.
 
 local mouseCircle = nil
 local mouseCircleTimer = nil
