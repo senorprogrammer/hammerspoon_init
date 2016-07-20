@@ -5,6 +5,10 @@
   --hs.notify.new({title="Hammerspoon", informativeText="Hello World"}):send()
 --end)
 
+function alert(title, text)
+  hs.notify.new({ title = title, informativeText = text}):send()
+end
+
 -- -------------------- Config Reload --------------------
 --
 -- Watches this file for changes and automatically reloads them.
@@ -46,21 +50,25 @@ hs.timer.doEvery(1, function() setTime(utcMenu) end)
 
 -- Tell iTunes to play/pause
 hs.hotkey.bind({"alt", "ctrl"}, "space", function()
-  if hs.itunes.getPlaybackState() == "kPSP" then
-    hs.itunes.pause()
-  else
-    hs.itunes.play()
-  end
+  hs.itunes.playpause()
 end)
 
 -- Tell iTunes to play next track
 hs.hotkey.bind({"alt", "ctrl"}, "x", function()
   hs.itunes.next()
+  alert("Now playing:", hs.itunes.getCurrentTrack())
 end)
 
 -- Tell iTunes to play prev track
 hs.hotkey.bind({"alt", "ctrl"}, "z", function()
   hs.itunes.previous()
+  alert("Now playing:", hs.itunes.getCurrentTrack())
+end)
+
+-- -------------------- Window Management --------------------
+
+hs.hotkey.bind({"shift", "alt"}, "D", function()
+  alert("DEBUG", "D")
 end)
 
 -- -------------------- Mouse Locator --------------------
