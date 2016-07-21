@@ -6,8 +6,8 @@
 local utcMenu = hs.menubar.new()
 
 function displayUTC(utcMenu)
-  utcTime = os.date("!%H:%M:%S")
-  utcMenu:setTitle(utcTime)
+  utcTime = os.date("!%H:%M")
+  utcMenu:setTitle("UTC " .. utcTime)
 end
 
 hs.timer.doEvery(1, function() displayUTC(utcMenu) end)

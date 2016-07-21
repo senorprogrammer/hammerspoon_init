@@ -10,7 +10,7 @@ function halfLeft()
   local max    = win:screen():frame()
   local frame  = buildRect(max.x, max.y, (max.w * 0.5), max.h)
 
-  win:setFrame(frame)
+  fastFrame(win, frame)
 end
 
 function halfRight()
@@ -18,7 +18,7 @@ function halfRight()
   local max    = win:screen():frame()
   local frame  = buildRect((max.x + (max.w * 0.5)), max.y, max.w / 2, max.h)
 
-  win:setFrame(frame)
+  fastFrame(win, frame)
 end
 
 function threeQuartersLeft()
@@ -26,7 +26,7 @@ function threeQuartersLeft()
   local max    = win:screen():frame()
   local frame  = buildRect(max.x, max.y, (max.w * 0.75), max.h)
 
-  win:setFrame(frame)
+  fastFrame(win, frame)
 end
 
 function fullScreen()
@@ -34,8 +34,13 @@ function fullScreen()
   local max    = win:screen():frame()
   local frame  = buildRect(max.x, max.y, max.w, max.h)
 
-  win:setFrame(frame)
+  fastFrame(win, frame)
 end
+
+function fastFrame(window, frame)
+  window:setFrame(frame, 0)
+end
+
 
 -- My needs for window arrangement are pretty simple
 k:bind({}, '1',      function() halfLeft()          k:exit() end)
