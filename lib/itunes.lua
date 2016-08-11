@@ -1,6 +1,6 @@
 -- -------------------- iTunes Control --------------------
 --
--- Controls iTunes. Adds play/pause, next track, and prev track.
+-- Controls iTunes.
 
 -- Tell iTunes to play/pause
 hs.hotkey.bind({"alt", "ctrl"}, "space", function()
@@ -17,4 +17,9 @@ end)
 hs.hotkey.bind({"alt", "ctrl"}, "z", function()
   hs.itunes.previous()
   notify("Now playing:", hs.itunes.getCurrentTrack())
+end)
+
+-- Display information about the current track
+hs.hotkey.bind({"alt", "ctrl"}, "c", function()
+  hs.itunes.displayCurrentTrack()
 end)
