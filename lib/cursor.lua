@@ -42,4 +42,4 @@ function mouseHighlight()
   mouseCircleTimer = hs.timer.doAfter(0.75, function() removeCircle(mouseCircle) end)
 end
 
-hs.hotkey.bind({"cmd","alt","ctrl"}, "M", mouseHighlight)
+hs.hotkey.bind({"cmd","alt","ctrl"}, "m", mouseHighlight)
