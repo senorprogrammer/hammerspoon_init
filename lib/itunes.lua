@@ -9,6 +9,11 @@ function displayCurrentTrack()
   notify(track, artist)
 end
 
+-- Launch iTunes if it isn't already launched
+hs.hotkey.bind({"alt", "ctrl"}, "i", function()
+  hs.application.launchOrFocus("iTunes")
+end)
+
 -- Tell iTunes to play/pause
 hs.hotkey.bind({"alt", "ctrl"}, "space", function()
   hs.itunes.playpause()

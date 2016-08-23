@@ -25,3 +25,4 @@ An init script for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon) tha
     - fullscreen, using Shift-Alt-D and then 0
 - A script to automatically reload the Hammerspoon configuration
   whenever a file in the .hammerspoon dir changes
+- Lock the screen, using Cmd-Alt-Ctrl-l
