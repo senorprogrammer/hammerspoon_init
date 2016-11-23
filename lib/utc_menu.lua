@@ -10,4 +10,8 @@ function displayUTC(utcMenu)
   utcMenu:setTitle("UTC " .. utcTime)
 end
 
-hs.timer.doEvery(1, function() displayUTC(utcMenu) end)
+-- Make the menu show up on load
+displayUTC(utcMenu)
+
+-- And refresh it every so often (I don't care about seconds)
+hs.timer.doEvery(30, function() displayUTC(utcMenu) end)
