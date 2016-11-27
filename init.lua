@@ -5,6 +5,7 @@ require "lib.utilities"
 
 require "lib.cursor"
 require "lib.itunes"
+require "lib.pomodoro"
 require "lib.reloader"
 require "lib.security"
 require "lib.utc_menu"
