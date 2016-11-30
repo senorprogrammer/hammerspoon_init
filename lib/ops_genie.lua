@@ -13,18 +13,18 @@ local on_call = json["participants"][1]["name"]
 
 -- Drawing
 
-function drawStr(str, x, y)
+function drawStr(str, x, y, delay)
   local grey = { red = 0.3, green = 0.3, blue = 0.3 }
   local style = { font = "Monoid", size = 10, color = grey }
   local size  = hs.drawing.getTextDrawingSize((str .. " "), style)
 
   text = hs.drawing.text({}, (str .. " ")):setSize(size):setTopLeft{ x = x, y = y }:setTextStyle(style):show()
 
-  hs.timer.doAfter(3, function() text:delete() end)
+  hs.timer.doAfter(delay, function() text:delete() end)
 end
 
 function drawOnCall()
-  drawStr(("on-call: " .. on_call), 2, 880)
+  drawStr(("on-call: " .. on_call), 2, 880, 2)
 end
 
 -- Key Bindings
