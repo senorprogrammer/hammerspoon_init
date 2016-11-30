@@ -48,4 +48,3 @@ k:bind({}, '2',      function() halfRight()         k:exit() end)
 k:bind({}, '3',      function() threeQuartersLeft() k:exit() end)
 k:bind({}, '0',      function() fullScreen()        k:exit() end)
 k:bind({}, 'escape', function()                     k:exit() end)
-

@@ -1,6 +1,6 @@
-local key = os.getenv("OPS_GENIE_API")
+local key  = os.getenv("OPS_GENIE_API")
 local team = os.getenv("OPS_GENIE_TEAM")
-local url = ("https://api.opsgenie.com/v1.1/json/schedule/whoIsOnCall" .. "?" .. "apiKey=" .. key .. "&name=" .. team)
+local url  = ("https://api.opsgenie.com/v1.1/json/schedule/whoIsOnCall" .. "?" .. "apiKey=" .. key .. "&name=" .. team)
 
 -- Fetching
 
@@ -18,7 +18,17 @@ function drawStr(str, x, y)
   local style = { font = "Monoid", size = 10, color = grey }
   local size  = hs.drawing.getTextDrawingSize((str .. " "), style)
 
-  hs.drawing.text({}, (str .. " ")):setSize(size):setTopLeft{ x = x, y = y }:setTextStyle(style):show()
+  text = hs.drawing.text({}, (str .. " ")):setSize(size):setTopLeft{ x = x, y = y }:setTextStyle(style):show()
+
+  hs.timer.doAfter(3, function() text:delete() end)
 end
 
-drawStr(("on-call: " .. on_call), 2, 880)
+function drawOnCall()
+  drawStr(("on-call: " .. on_call), 2, 880)
+end
+
+-- Key Bindings
+
+k = hs.hotkey.modal.new({"shift", "alt"}, 'G')
+
+k:bind({}, '1', function() drawStr(("on-call: " .. on_call), 2, 880) k:exit() end)
