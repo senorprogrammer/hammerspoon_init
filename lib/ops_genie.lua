@@ -31,4 +31,4 @@ end
 
 k = hs.hotkey.modal.new({"shift", "alt"}, 'G')
 
-k:bind({}, '1', function() drawStr(("on-call: " .. on_call), 2, 880) k:exit() end)
+k:bind({}, '1', function() drawOnCall() k:exit() end)
