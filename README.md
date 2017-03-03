@@ -1,6 +1,6 @@
 # Hammerspoon
 
-An init script for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon) that provides a bunch of keyboard shortcuts for actions I commonly use.
+A suite of Lua scripts for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon) that provide functionality and keyboard shortcuts for actions I commonly use.
 
 ## Installation
 
@@ -9,20 +9,34 @@ An init script for [Hammerspoon](https://github.com/Hammerspoon/hammerspoon) tha
 1. Open Hammerspoon or reload your config from the Hammerspoon menubar
    menu.
 
-## Features
+## Functionality
 
-- Find the cursor onscreen using Cmd-Alt-Ctrl-m
-- Display a universal time (UTC) clock in the menubar
-- Control iTunes:
-    - play/pause, using Alt-Ctrl-Space
-    - next track, using Alt-Ctrl-x
-    - prev track, using Alt-Ctrl-z
-    - display current track, using Alt-Ctrl-c
-- Front-most window manipulation:
-    - halfscreen-left, using Shift-Alt-D and then 1
-    - halfscreen-right, using Shift-Alt-D and then 2
-    - threequarters-left, using Shift-Alt-D and then 3
-    - fullscreen, using Shift-Alt-D and then 0
-- A script to automatically reload the Hammerspoon configuration
-  whenever a file in the .hammerspoon dir changes
-- Lock the screen, using Cmd-Alt-Ctrl-l
+This set of scripts provides the following functionality via Hammerspoon.
+
+### iTunes Control
+* `Alt-Ctrl-Space` : play/pause
+* `Alt-Ctrl-x`     : next track
+* `Alt-Ctrl-z`     : previous track
+* `Alt-Ctrl-c`     : display current track
+
+### Mouse Location
+* `Cmd-Alt-Ctrl-m` : find the cursor on the screen
+
+### UTC Menu 
+* Displays a universal time (UTC) clock in the menubar
+
+### DNS Menu
+* Displays the current DNS server settings in the menubar (useful in conjunction with [sdns](https://github.com/senorprogrammer/sdns))
+
+### Window Positioning and Sizing
+* `Shift-Alt-D, 1` : halfscreen-left
+* `Shift-Alt-D, 2` : halfscreen-right
+* `Shift-Alt-D, 3` : threequarters-left
+* `Shift-Alt-D, 0` : fullscreen
+
+### Hammerspoon Development
+* A script to automatically reload the Hammerspoon configuration
+  whenever a file in the `.hammerspoon` dir changes
+
+### Misc
+* `Cmd-Alt-Ctrl-l` : lock the computer
