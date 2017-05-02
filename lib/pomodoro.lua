@@ -28,14 +28,17 @@ function pom_disable()
   pom_is_active = false
 
   if (pom_disable_count == 0) then
+    hs.alert.show("Pomodora paused", 2)
      if (pom_was_active) then
       pom_timer:stop()
     end
   elseif (pom_disable_count == 1) then
+    hs.alert.show("Resetting Pomodora...", 2)
     pom_time_left         = pom_work_period_sec
     pom_curr_active_type  = "W"
     pom_update_display()
   elseif (pom_disable_count >= 2) then
+    hs.alert.show("Shutting down Pomodora...", 2)
     if pom_menu == nil then
       pom_disable_count = 2
       return
@@ -87,8 +90,10 @@ end
 function pom_enable()
   pom_disable_count = 0;
   if (pom_is_active) then
+    hs.alert.show("Pomodora already started", 1)
     return
   elseif pom_timer == nil then
+    hs.alert.show("Starting Pomodora...", 2)
     pom_create_menu()
     pom_timer = hs.timer.new(1, pom_update_menu)
   end
