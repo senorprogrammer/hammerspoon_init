@@ -8,9 +8,7 @@ A suite of Lua scripts for [Hammerspoon](https://github.com/Hammerspoon/hammersp
 1. Clone this repository into your `~/.hammerspoon` directory.
 1. Open Hammerspoon or reload your config from the Hammerspoon menubar menu.
 
-## Functionality
-
-This set of scripts provides the following functionality via Hammerspoon.
+## Features
 
 ### DNS Menu
 * Displays the current DNS server settings in the menubar (useful in conjunction with [sdns](https://github.com/senorprogrammer/sdns))
@@ -31,9 +29,9 @@ This set of scripts provides the following functionality via Hammerspoon.
 * Displays a universal time (UTC) clock in the menubar
 
 ### Volume Control
-* `Cmd-Alt-Ctrl-z`     : decrease system volume
 * `Cmd-Alt-Ctrl-x`     : increase system volume
-* `Cmd-Alt_Ctrl-Space` : mute system volume
+* `Cmd-Alt-Ctrl-z`     : decrease system volume
+* `Cmd-Alt-Ctrl-Space` : mute system volume
 
 ### Window Positioning and Sizing
 * `Shift-Alt-D, 1` : halfscreen-left
