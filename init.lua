@@ -4,6 +4,7 @@
 require "lib.utilities"
 
 require "lib.cursor"
+require "lib.deleter"
 require "lib.dns"
 require "lib.itunes"
 require "lib.pomodoro"
