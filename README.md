@@ -11,10 +11,15 @@ A suite of Lua scripts for [Hammerspoon](https://github.com/Hammerspoon/hammersp
 ## Features
 
 ### DNS Menu
-* Displays the current DNS server settings in the menubar (useful in conjunction with [sdns](https://github.com/senorprogrammer/sdns))
+Displays the current DNS server settings in the menubar (useful in conjunction with [sdns](https://github.com/senorprogrammer/sdns))
+
+### File Deleter
+A script to delete `.bash-history` and `.zsh-history` files.
+
+* `Cmd-Alt-Ctrl-d` : delete the files
 
 ### Hammerspoon Development
-* A script to automatically reload the Hammerspoon configuration whenever a file in the `.hammerspoon` dir changes
+A script to automatically reload the Hammerspoon configuration whenever a file in the `.hammerspoon` dir changes
 
 ### iTunes Control
 * `Alt-Ctrl-Space` : play/pause
@@ -26,7 +31,7 @@ A suite of Lua scripts for [Hammerspoon](https://github.com/Hammerspoon/hammersp
 * `Cmd-Alt-Ctrl-m` : find the cursor on the screen
 
 ### UTC Menu
-* Displays a universal time (UTC) clock in the menubar
+Displays a universal time (UTC) clock in the menubar
 
 ### Volume Control
 * `Cmd-Alt-Ctrl-x`     : increase system volume
