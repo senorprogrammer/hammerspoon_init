@@ -11,6 +11,7 @@ require "lib.pomodoro"
 require "lib.reloader"
 require "lib.security"
 require "lib.utc_menu"
+require "lib.volume"
 require "lib.windows"
 
 -- Experimental
