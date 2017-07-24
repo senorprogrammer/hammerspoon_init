@@ -3,6 +3,7 @@
 
 require "lib.utilities"
 
+require "lib.crypto_currencies"
 require "lib.cursor"
 require "lib.deleter"
 require "lib.dns"
@@ -15,4 +16,4 @@ require "lib.volume"
 require "lib.windows"
 
 -- Experimental
-require "lib.exp.drawing"
+-- require "lib.exp.drawing"
