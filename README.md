@@ -18,6 +18,13 @@ A script to delete `.bash-history` and `.zsh-history` files.
 
 * `Cmd-Alt-Ctrl-d` : delete the files
 
+### Firewall
+Displays two dots in the top-right of the menubar:
+* Firewall state: red for off, green for on
+* Firewall stealth mode: red for off, green for on
+
+Checks the status every two minutes
+
 ### Hammerspoon Development
 A script to automatically reload the Hammerspoon configuration whenever a file in the `.hammerspoon` dir changes
 
