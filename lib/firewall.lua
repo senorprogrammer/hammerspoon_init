@@ -7,7 +7,6 @@ local obj = {}
 local interval = 2
 
 obj.timer = nil
-obj.firewallStealthText = nil
 obj.firewallStealthDot = nil
 
 hs.canvas.drawingWrapper(true)
@@ -18,15 +17,16 @@ function obj:render()
   -- Start off by declaring the size of the text/circle objects and some anchor positions for them on screen
   local statusDotWidth = 8
   local statusDotOffset = 2
-  local statusDot_x = initialScreenFrame.x + initialScreenFrame.w - statusDotWidth - statusDotOffset
-  local statusDot_y = 2
+  local statusDotYVal = 2
 
-  self.firewallEnabledDot = hs.drawing.circle(hs.geometry.rect(statusDot_x,
-                                                               statusDot_y + (0 * (statusDotWidth + statusDotOffset)),
+  local xPos = self.xPosition(statusDotWidth, statusDotOffset)
+
+  self.firewallEnabledDot = hs.drawing.circle(hs.geometry.rect(xPos,
+                                                               self.yPosition(0, statusDotYVal, statusDotWidth, statusDotOffset),
                                                                statusDotWidth,
                                                                statusDotWidth))
-  self.firewallStealthDot = hs.drawing.circle(hs.geometry.rect(statusDot_x,
-                                                               statusDot_y + (1 * (statusDotWidth + statusDotOffset)),
+  self.firewallStealthDot = hs.drawing.circle(hs.geometry.rect(xPos,
+                                                               self.yPosition(1, statusDotYVal, statusDotWidth, statusDotOffset),
                                                                statusDotWidth,
                                                                statusDotWidth))
 
@@ -60,10 +60,40 @@ function obj.statusletCallbackFirewallStealth(code, stdout, stderr)
   obj.firewallStealthDot:setFillColor(color)
 end
 
+function obj.xPosition(width, offset)
+  local initialScreenFrame = hs.screen.allScreens()[1]:fullFrame()
+
+  local xPos = initialScreenFrame.x + initialScreenFrame.w - width - offset
+  return xPos
+end
+
+function obj.yPosition(idx, yVal, width, offset)
+  local yPos = yVal + (idx * (width + offset))
+  return yPos
+end
+
+-- This exists because windowing changes when the screen locks or the screensaver starts
+-- play havoc with the positioning of the elements
+function obj:reposition()
+  local statusDotWidth = 8
+  local statusDotOffset = 2
+  local statusDotYVal = 2
+
+  local xPos = self.xPosition(statusDotWidth, statusDotOffset)
+
+  self.firewallEnabledDot:setTopLeft(hs.geometry.point(xPos, self.yPosition(0, statusDotYVal, statusDotWidth, statusDotOffset)))
+  self.firewallStealthDot:setTopLeft(hs.geometry.point(xPos, self.yPosition(1, statusDotYVal, statusDotWidth, statusDotOffset)))
+
+  return self
+end
+
 function obj:update()
   local proc = "/usr/libexec/ApplicationFirewall/socketfilterfw"
   hs.task.new(proc, self.statusletCallbackFirewallEnabled, {"--getglobalstate"}):start()
   hs.task.new(proc, self.statusletCallbackFirewallStealth, {"--getstealthmode"}):start()
+
+  self:reposition()
+
   return self
 end
 
