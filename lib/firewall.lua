@@ -4,7 +4,7 @@
 -- Largely cribbed from https://github.com/cmsj/hammerspoon-config/blob/master/statuslets.lua
 
 local obj = {}
-local interval = 5 -- in minutes
+local interval = 2 -- in minutes
 
 obj.timer = nil
 obj.firewallStealthDot = nil
@@ -82,22 +82,17 @@ function obj:reposition()
   return self
 end
 
+-- This only exists to be called from the timer below, because I don't know how to pass `obj` into the function used by the timer
+function update()
+  obj:update()
+end
+
 function obj:update()
+  self:reposition()
+
   local proc = "/usr/libexec/ApplicationFirewall/socketfilterfw"
   hs.task.new(proc, self.statusletCallbackFirewallEnabled, {"--getglobalstate"}):start()
   hs.task.new(proc, self.statusletCallbackFirewallStealth, {"--getstealthmode"}):start()
-
-  self:reposition()
-
-  return self
-end
-
--- Render our statuslets, trigger a timer to update them regularly, and do an initial update
-function obj:start()
-  self:render()
-  self.timer = hs.timer.new(hs.timer.minutes(interval), function(obj) obj:update() end)
-  self.timer:start()
-  self:update()
 
   return self
 end
@@ -110,5 +105,10 @@ function obj:stop()
   return self
 end
 
-obj:start()
+local trigger = hs.timer.new(hs.timer.minutes(interval), function() update() end)
+trigger:start()
+
+obj:render()
+obj:update()
+
 return obj
