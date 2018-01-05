@@ -10,28 +10,28 @@ function displayCurrentTrack()
 end
 
 -- Launch iTunes if it isn't already launched
-hs.hotkey.bind({"alt", "ctrl"}, "i", function()
-  hs.application.launchOrFocus("iTunes")
-end)
+--hs.hotkey.bind({"alt", "cmd"}, "i", function()
+  --hs.application.launchOrFocus("iTunes")
+--end)
 
 -- Tell iTunes to play/pause
-hs.hotkey.bind({"alt", "ctrl"}, "space", function()
+hs.hotkey.bind({"alt", "shift"}, "space", function()
   hs.itunes.playpause()
 end)
 
 -- Tell iTunes to play next track
-hs.hotkey.bind({"alt", "ctrl"}, "x", function()
+hs.hotkey.bind({"alt", "shift"}, "x", function()
   hs.itunes.next()
   displayCurrentTrack()
 end)
 
 -- Tell iTunes to play prev track
-hs.hotkey.bind({"alt", "ctrl"}, "z", function()
+hs.hotkey.bind({"alt", "shift"}, "z", function()
   hs.itunes.previous()
   displayCurrentTrack()
 end)
 
 -- Display information about the current track
-hs.hotkey.bind({"alt", "ctrl"}, "c", function()
+hs.hotkey.bind({"alt", "shift"}, "c", function()
   displayCurrentTrack()
 end)
